@@ -1,5 +1,5 @@
 ### Research Experience
-I am a Research Associate working with [Dr. Jonathan Lindner](https://www.ohsu.edu/people/jonathan-r-lindner-md) in at Oregon Health Sciences University (OHSU) and the Oregon National Primate Research Center (ONPRC). I have experience in translational cardiology and acoustics and the application of ultrasound as a means of diagnostic imaging as well as a therapeutic technique.
+I am a Research Associate working with [Dr. Jonathan Lindner](https://www.ohsu.edu/people/jonathan-r-lindner-md) at Oregon Health Sciences University (OHSU) and the Oregon National Primate Research Center (ONPRC). My research covers ultrasound and cardiovascular disease. I study ultrasound as a tool for both diagnostic and therapeutic purposes with and without the use of microbubble contrast agents to treat ischemic disease such as peripheral artery disease and myocardial infarction. Addtionally, I study aortic valve disease through a murine model of moderate aortic stenosis.
 
 I am in the process of applying to graduate school. My primary research interests lie in computational aspects of biomedical imaging, though I am also eager to study related aspects of biomedical analysis, computational biology and bioinformatics.
 
