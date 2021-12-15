@@ -23,7 +23,6 @@ title: "Matthew Muller"
 description: Research Associate, OHSU
 logo: assets/MattMuller.jpeg
 email: mullema@ohsu.edu
-permalink: assets/muller_cv.pdf
 
 #build
 theme: jekyll-theme-minimal
