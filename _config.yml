@@ -19,9 +19,9 @@
 # in the templates via {{ site.myvariable }}.
 
 #info
-title: "Matthew Muller"
+title: Matthew Muller
 logo: assets/MattMuller.jpeg
 description: Graduate Student, NYU
-mail: Matt.Muller@nyulangone.org
+email: Matt.Muller@nyulangone.org
 #build
 theme: jekyll-theme-minimal
