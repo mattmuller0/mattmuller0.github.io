@@ -22,6 +22,6 @@
 title: Matthew Muller
 logo: assets/MattMuller.jpeg
 description: Graduate Student, NYU
-permalink: Matt.Muller@nyulangone.org
+email: Matt.Muller@nyulangone.org
 #build
 theme: jekyll-theme-minimal
