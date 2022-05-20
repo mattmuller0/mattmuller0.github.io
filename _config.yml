@@ -23,6 +23,6 @@ title: "Matthew Muller"
 description: Graduate Student, NYU
 logo: assets/MattMuller.jpeg
 email: Matt.Muller@nyulangone.org
-
+CV: assets/muller_cv.pdf
 #build
 theme: jekyll-theme-minimal
