@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Matthew Muller</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --color-primary: #57068c;
+    --color-primary-hover: #7b1fa2;
+    --color-text: #1e293b;
+    --color-text-muted: #475569;
+    --color-bg: #fafaf8;
+    --color-surface: #ffffff;
+    --color-border: #e2e0dc;
+    --color-section-label: #64748b;
+    --font-serif: 'Source Serif 4', Georgia, serif;
+    --font-sans: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-text);
+    background: var(--color-bg);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  a:hover {
+    color: var(--color-primary-hover);
+    text-decoration: underline;
+  }
+
+  /* ---- Layout ---- */
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+  }
+
+  /* ---- Header / Hero ---- */
+  .header {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .header-photo {
+    flex-shrink: 0;
+  }
+
+  .header-photo img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    border: 3px solid var(--color-border);
+  }
+
+  .header-info h1 {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.4rem;
+  }
+
+  .header-info .title-line {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    margin-bottom: 0.2rem;
+  }
+
+  .header-info .affiliation {
+    font-size: 0.92rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: 0.85rem;
+  }
+
+  .header-links {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    font-size: 0.875rem;
+  }
+
+  .header-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.28rem 0.7rem;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    font-weight: 600;
+    color: var(--color-text);
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .header-links a:hover {
+    background: #f1f0ed;
+    border-color: #bbb;
+    text-decoration: none;
+    color: var(--color-primary);
+  }
+
+  .header-links a svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    opacity: 0.65;
+  }
+
+  /* ---- Sections ---- */
+  .section {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
+  .section-label {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--color-section-label);
+    padding-top: 0.2rem;
+    text-align: right;
+  }
+
+  .section-content p {
+    margin-bottom: 0.9rem;
+    font-size: 0.94rem;
+  }
+
+  .section-content p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ---- Education ---- */
+  .edu-entry {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 0.5rem 1rem;
+    margin-bottom: 0.6rem;
+    font-size: 0.92rem;
+  }
+
+  .edu-year {
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    padding-top: 0.05rem;
+    white-space: nowrap;
+  }
+
+  .edu-detail strong {
+    font-weight: 600;
+  }
+
+  .edu-detail em {
+    color: var(--color-text-muted);
+  }
+
+  /* ---- Publications ---- */
+  .pub-category {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--color-text);
+    margin-bottom: 0.6rem;
+    margin-top: 1.4rem;
+  }
+
+  .pub-category:first-child {
+    margin-top: 0;
+  }
+
+  .pub-list {
+    list-style: none;
+    margin-bottom: 0.5rem;
+  }
+
+  .pub-list li {
+    font-size: 0.88rem;
+    line-height: 1.65;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid #f0efec;
+  }
+
+  .pub-list li:last-child {
+    border-bottom: none;
+  }
+
+  .pub-list .authors {
+    color: var(--color-text-muted);
+  }
+
+  .pub-list .pub-me {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+
+  .pub-list .venue {
+    font-style: italic;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .pub-list .pub-badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    padding: 0.1rem 0.45rem;
+    border-radius: 3px;
+    vertical-align: middle;
+    margin-left: 0.3rem;
+  }
+
+  .badge-accepted {
+    background: #e8f5e9;
+    color: #2e7d32;
+  }
+
+  .badge-review {
+    background: #fff8e1;
+    color: #f57f17;
+  }
+
+  .scholar-link {
+    margin-top: 1rem;
+    font-size: 0.88rem;
+    font-style: italic;
+    color: var(--color-text-muted);
+  }
+
+  /* ---- Awards / Patents ---- */
+  .award-entry {
+    display: grid;
+    grid-template-columns: 42px 1fr;
+    gap: 0 0.75rem;
+    margin-bottom: 0.55rem;
+    font-size: 0.9rem;
+    align-items: baseline;
+  }
+
+  .award-year {
+    color: var(--color-text-muted);
+    font-size: 0.82rem;
+    text-align: right;
+  }
+
+  .patent-entry {
+    margin-bottom: 0.75rem;
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  .patent-entry .patent-year {
+    color: var(--color-text-muted);
+    font-size: 0.82rem;
+    display: block;
+    margin-bottom: 0.1rem;
+  }
+
+  .patent-num {
+    color: var(--color-text-muted);
+    font-style: italic;
+  }
+
+  /* ---- Skills ---- */
+  .skill-row {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 0.3rem 1rem;
+    margin-bottom: 0.35rem;
+    font-size: 0.9rem;
+    align-items: baseline;
+  }
+
+  .skill-label {
+    font-weight: 600;
+    color: var(--color-text);
+    font-size: 0.85rem;
+  }
+
+  .skill-val {
+    color: var(--color-text-muted);
+  }
+
+  /* ---- Responsive ---- */
+  @media (max-width: 680px) {
+    .header {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .header-links {
+      justify-content: center;
+    }
+
+    .section {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+
+    .section-label {
+      text-align: left;
+    }
+
+    .container {
+      padding: 2rem 1.25rem 4rem;
+    }
+
+    .edu-entry {
+      grid-template-columns: 70px 1fr;
+    }
+  }
+</style>
+</head>
+
+<body>
+<div class="container">
+
+  <!-- ======== Header ======== -->
+  <header class="header">
+    <div class="header-photo">
+      <img src="assets/MattMuller.jpeg" alt="Matthew Muller">
+    </div>
+    <div class="header-info">
+      <h1>Matthew Muller</h1>
+      <div class="title-line">PhD Candidate, Biomedical Engineering</div>
+      <div class="affiliation">
+        <a href="https://ruggleslaboratory.com" target="_blank" rel="noopener">Ruggles</a> &amp;
+        <a href="https://med.nyu.edu/faculty/jeffrey-s-berger" target="_blank" rel="noopener">Berger</a> Laboratories<br>
+        NYU Tandon School of Engineering &amp; NYU Langone Health
+      </div>
+      <div class="header-links">
+        <a href="mailto:Matthew.Muller@nyulangone.org">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+          Email
+        </a>
+        <a href="assets/muller_cv.pdf" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"/></svg>
+          CV
+        </a>
+        <a href="https://scholar.google.com/citations?hl=en&user=Sl9VUVgAAAAJ" target="_blank" rel="noopener">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/></svg>
+          Google Scholar
+        </a>
+        <a href="https://github.com/mattmuller0" target="_blank" rel="noopener">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======== About ======== -->
+  <section class="section">
+    <div class="section-label">About</div>
+    <div class="section-content">
+      <p>I am a PhD candidate in Biomedical Engineering at New York University, co-mentored by
+        <a href="https://ruggleslaboratory.com" target="_blank" rel="noopener">Dr. Kelly Ruggles</a> and
+        <a href="https://med.nyu.edu/faculty/jeffrey-s-berger" target="_blank" rel="noopener">Dr. Jeffrey Berger</a>
+        at the NYU Tandon School of Engineering and NYU Langone Health. My research sits at the intersection of
+        multi-omic computational biology and cardiovascular medicine, with a focus on discovering translational
+        biomarkers and molecular disease subtypes in high-risk patient populations.</p>
+      <p>My work integrates whole-genome sequencing, bulk and single-cell RNA-seq, DNA methylomics, and
+        proteomics to characterize the molecular landscape of chronic coronary disease—primarily through analysis
+        of the ISCHEMIA trials biorepository. In parallel, I develop and prospectively validate platelet-based
+        RNA and protein scoring tools (<em>PRESS</em>, <em>TIPS</em>, <em>PROSPER</em>) that stratify cardiovascular
+        risk across diverse inflammatory disease contexts. I have contributed to 25+ peer-reviewed publications,
+        including 7 first-author papers, and hold two U.S. provisional patents for platelet biomarker tools.</p>
+      <p>Prior to my PhD, I spent four years at the Knight Cardiovascular Institute at OHSU investigating
+        therapeutic and diagnostic ultrasound, characterizing shear-dependent vasoactive pathways and
+        VWF-mediated thromboinflammatory mechanisms in peripheral artery disease and aortic stenosis.</p>
+    </div>
+  </section>
+
+  <!-- ======== Research ======== -->
+  <section class="section">
+    <div class="section-label">Research</div>
+    <div class="section-content">
+      <p>My research program spans two complementary areas:</p>
+      <p><strong>Multi-omic cardiovascular genomics.</strong> I lead computational analyses of the ISCHEMIA trials
+        biorepository, applying multi-layered omics (WGS, RNA-seq, methylomics, proteomics) to identify
+        molecularly distinct subtypes of chronic coronary disease with differential clinical outcomes. Using
+        whole-genome sequencing, I established that clonal hematopoiesis of indeterminate potential (CHIP) is
+        prevalent in this cohort and independently associated with adverse cardiovascular events. I subsequently
+        integrated whole-blood epigenomics and transcriptomics to define vulnerable molecular subtypes with
+        precision stratification potential.</p>
+      <p><strong>Platelet biology &amp; biomarker discovery.</strong> I develop platelet transcriptomic and
+        proteomic scoring tools—PRESS (Platelet Reactivity ExpreSsion Score), TIPS (platelet Transcriptomic
+        signature of thrombInflammation and Platelet reactivity Score), and PROSPER (PROtein Signature of
+        PlatelEt Reactivity)—validated across patients with peripheral artery disease, systemic lupus
+        erythematosus, and chronic coronary disease. These tools predict cardiovascular events prospectively
+        and are the basis of two U.S. provisional patents.</p>
+    </div>
+  </section>
+
+  <!-- ======== Education ======== -->
+  <section class="section">
+    <div class="section-label">Education</div>
+    <div class="section-content">
+      <div class="edu-entry">
+        <div class="edu-year">2023–2026</div>
+        <div class="edu-detail">
+          <strong>PhD, Biomedical Engineering</strong><br>
+          <em>NYU Tandon School of Engineering, New York, NY</em>
+        </div>
+      </div>
+      <div class="edu-entry">
+        <div class="edu-year">2022–2023</div>
+        <div class="edu-detail">
+          <strong>MS, Biomedical Informatics</strong><br>
+          <em>NYU Grossman School of Medicine, New York, NY</em>
+        </div>
+      </div>
+      <div class="edu-entry">
+        <div class="edu-year">2014–2018</div>
+        <div class="edu-detail">
+          <strong>BA, Chemistry</strong><br>
+          <em>Reed College, Portland, OR</em>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== Publications ======== -->
+  <section class="section">
+    <div class="section-label">Publications</div>
+    <div class="section-content">
+
+      <div class="pub-category">Multi-Omic Cardiovascular Genomics</div>
+      <ul class="pub-list">
+        <li>
+          <span class="pub-me">Muller M</span><span class="authors">, Cornwell MG, Rajkumar S, Chen Z, et al.</span>
+          "Whole blood epigenomic and transcriptomic characterization identifies vulnerable molecular subtypes of chronic coronary disease."
+          <span class="venue">Nature Communications</span>, 2026.
+          <span class="pub-badge badge-accepted">Accepted</span>
+        </li>
+        <li>
+          <span class="pub-me">Muller M</span><span class="authors">, Liu R, Shah F, Hu J, et al.</span>
+          "Clonal Hematopoiesis of Indeterminate Potential in Chronic Coronary Disease: A Report From the ISCHEMIA Trials Biorepository."
+          <span class="venue">Circulation: Genomic and Precision Medicine</span>, 2025.
+        </li>
+        <li>
+          <span class="authors">Berger JS, Cornwell MG, Xia Y, </span><span class="pub-me">Muller MA</span><span class="authors">, et al.</span>
+          "A Platelet Reactivity ExpreSsion Score derived from patients with peripheral artery disease predicts cardiovascular risk."
+          <span class="venue">Nature Communications</span>, 2024.
+        </li>
+      </ul>
+
+      <div class="pub-category">Platelet Biology &amp; Biomarker Discovery</div>
+      <ul class="pub-list">
+        <li>
+          <span class="pub-me">Muller MA</span><span class="authors">, Luttrell-Williams E, Bash H, Cornwell MG, et al.</span>
+          "Platelet Gene Expression in Systemic Lupus Erythematosus and Cardiovascular Health."
+          <span class="venue">JACC: Basic to Translational Science</span>, 2025.
+        </li>
+        <li>
+          <span class="authors">Beitzen-Heineke A, </span><span class="pub-me">Muller MA</span><span class="authors">, Xia Y, Luttrell-Williams E, et al.</span>
+          "A platelet transcriptomic signature of thromboinflammation predicts cardiovascular risk."
+          <span class="venue">JCI Insight</span>, 2025.
+        </li>
+        <li>
+          <span class="pub-me">Muller M</span><span class="authors">, Hamo CE, Luttrell-Williams E, Ruggles KV, Barrett TJ, Berger JS.</span>
+          "A PROtein Signature of PlatelEt Reactivity (PROSPER) Associated with Cardiovascular Events."
+          <span class="venue">Under Review</span>.
+          <span class="pub-badge badge-review">Under Review</span>
+          <span class="authors"> (Presented at AHA Scientific Sessions 2025)</span>
+        </li>
+      </ul>
+
+      <div class="pub-category">Therapeutic Ultrasound &amp; Vascular Biology</div>
+      <ul class="pub-list">
+        <li>
+          <span class="pub-me">Muller MA</span><span class="authors">, Ozawa K, Hodovan J, Hagen MW, et al.</span>
+          "Treatment of Limb Ischemia with Conducted Effects of Catheter-Based Endovascular Ultrasound."
+          <span class="venue">Ultrasound in Medicine &amp; Biology</span>, 2021.
+        </li>
+        <li>
+          <span class="pub-me">Muller MA</span><span class="authors">, Xie A, Qi Y, Zhao Y, et al.</span>
+          "Regional and Conducted Vascular Effects of Endovascular Ultrasound Catheters."
+          <span class="venue">Ultrasound in Medicine &amp; Biology</span>, 2020.
+        </li>
+        <li>
+          <span class="authors">Ozawa K, </span><span class="pub-me">Muller MA</span><span class="authors">, Varlamov O, Hagen MW, et al.</span>
+          "Reduced Proteolytic Cleavage of von Willebrand Factor Leads to Aortic Valve Stenosis and Load-Dependent Ventricular Remodeling."
+          <span class="venue">JACC: Basic to Translational Science</span>, 2022.
+        </li>
+        <li>
+          <span class="authors">Ozawa K, </span><span class="pub-me">Muller MA</span><span class="authors">, Varlamov O, Tavori H, et al.</span>
+          "Proteolysis of Von Willebrand Factor Influences Inflammatory Endothelial Activation and Vascular Compliance in Atherosclerosis."
+          <span class="venue">JACC: Basic to Translational Science</span>, 2020.
+        </li>
+      </ul>
+
+      <p class="scholar-link">Complete publication list on <a href="https://scholar.google.com/citations?hl=en&user=Sl9VUVgAAAAJ" target="_blank" rel="noopener">Google Scholar</a>.</p>
+    </div>
+  </section>
+
+  <!-- ======== Patents ======== -->
+  <section class="section">
+    <div class="section-label">Patents</div>
+    <div class="section-content">
+      <div class="patent-entry">
+        <span class="patent-year">2025</span>
+        "A Circulating Protein Signature of Platelet Reactivity Predicts Cardiovascular Risk."
+        <span class="patent-num">U.S. Prov. App. No. 63/912,729.</span>
+        With J.S. Berger, T.J. Barrett. Assignee: New York University.
+      </div>
+      <div class="patent-entry">
+        <span class="patent-year">2025</span>
+        "A Platelet Transcriptomic Signature of Thromboinflammation Predicts Cardiovascular Risk."
+        <span class="patent-num">U.S. Prov. App. No. 63/944,739.</span>
+        With J.S. Berger, T.J. Barrett. Assignee: New York University.
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== Awards ======== -->
+  <section class="section">
+    <div class="section-label">Awards</div>
+    <div class="section-content">
+      <div class="award-entry">
+        <div class="award-year">2022</div>
+        <div>ASE Foundation Early Career Investigator Award — <em>American Society of Echocardiography Scientific Sessions, Seattle, WA</em></div>
+      </div>
+      <div class="award-entry">
+        <div class="award-year">2022</div>
+        <div>Alan S. Pearlman Research Award — <em>American Society of Echocardiography Scientific Sessions, Seattle, WA</em></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== Skills ======== -->
+  <section class="section">
+    <div class="section-label">Skills</div>
+    <div class="section-content">
+      <div class="skill-row">
+        <div class="skill-label">Bioinformatics</div>
+        <div class="skill-val">RNA-seq, scRNA-seq, proteomics, methylomics, metabolomics, WGS/WES; multi-omic integration</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-label">Data Science</div>
+        <div class="skill-val">ML/DL for biological and clinical data; scikit-learn, TensorFlow, PyTorch, Docker, Git</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-label">Languages</div>
+        <div class="skill-val">Python, R, Bash — advanced; SQL, MATLAB — intermediate</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-label">Wet Lab</div>
+        <div class="skill-val">Ultrasound, histology, cryotome, GC-MS/MS, NMR, microscopy, PCR</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
